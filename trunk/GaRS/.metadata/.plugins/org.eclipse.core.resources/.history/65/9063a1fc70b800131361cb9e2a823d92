@@ -1,0 +1,254 @@
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
+/*************************************
+ * Author: Jeffrey Sall
+ * Last Edited:3/30/2014
+ * 
+ * Class Game:
+ * Game represents an individual games 
+ * data. It must be provided with a unique
+ * integer that represents the game's primary
+ * key. It stores this and the game's XML document
+ * as member data, and provides functions to
+ * Retrieve data(as strings) from the document.  
+ * 
+ * implements Comparable<Game>:
+ * This class implements this interface
+ * in order to be used by inherited compare
+ * functions in the java SDK. 
+ * 
+ * 
+ *************************************/
+
+class Game implements Comparable<Game>
+{
+	protected int gameID;
+	protected NodeList focus;
+	protected Element node;
+	protected Document gameDoc;
+	private final String imgStem="http://thegamesdb.net/banners/_gameviewcache/";
+	
+	public Game(int id)
+	{
+		gameID=id;
+		InputStream xml;
+		
+		
+		try 
+		{//
+			
+			URL url=new URL("http://thegamesdb.net/api/GetGame.php?id="+gameID);
+			URLConnection connect=url.openConnection();
+			connect.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-GB;    "
+					+ "					 rv:1.9.2.13) Gecko/20101203 Firefox/3.6.13 (.NET CLR 3.5.30729)");
+			
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			xml=new InputStream(connect.getInputStream());
+			DocumentBuilder bob=factory.newDocumentBuilder();
+			gameDoc=bob.parse(xml);
+			
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	public int getGameID()
+	{
+		return gameID;
+	}
+	
+	
+	public String getGameTitle()
+	{
+		String title=null;
+		
+		focus=gameDoc.getElementsByTagName( "GameTitle");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			title=node.getTextContent();
+				
+		return title;
+	}
+	
+	public int getPlatformID()
+	{
+		int pID=-1;
+		focus=gameDoc.getElementsByTagName("PlatformId");
+		node=(Element)focus.item(0);
+		if(node!=null)
+			pID=Integer.parseInt(node.getTextContent());
+		
+		return pID;
+	}
+	
+	public String getPlatform()
+	{
+		String platform=null;
+		
+		focus=gameDoc.getElementsByTagName("Platform");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			platform=node.getTextContent();
+				
+		return platform;
+	}
+	public String releaseDate()
+	{
+		String rd=null;
+		
+		focus=gameDoc.getElementsByTagName("ReleaseDate");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			rd=node.getTextContent();
+				
+		return rd;
+	}
+	public String getOverview()
+	{
+		String oview=null;
+		
+		focus=gameDoc.getElementsByTagName("Overview");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			oview=node.getTextContent();
+				
+		return oview;
+	}
+	public String getESRB()
+	{
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("ESRB");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			text=node.getTextContent();
+				
+		return text;
+	}
+	public String[] getGenera()
+	{
+		String args[];
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("genre");
+		args=new String[focus.getLength()];
+		for(int i=0; i<focus.getLength(); i++)
+		{	
+			node=(Element)focus.item(i);
+		
+			if(node!=null)
+				text=node.getTextContent();
+			args[i]=text;
+		}
+				
+		return args;
+	}
+	public String getYouTube()
+	{
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("YouTube");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			text=node.getTextContent();
+				
+		return text;
+	}
+	public String getPublisher()
+	{
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("Publisher");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			text=node.getTextContent();
+				
+		return text;
+	}
+	public String getDev()
+	{
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("Developer");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+			text=node.getTextContent();
+				
+		return text;
+	}
+	public int getRating()
+	{
+		String text=null;
+		double rating=0;
+		focus=gameDoc.getElementsByTagName("Rating");		
+		node=(Element)focus.item(0);
+		if(node!=null)
+		{
+			text=node.getTextContent();
+			rating=Double.parseDouble(text);
+		}
+		
+		return (int) (rating*100);
+	}
+	public String[] getFAoriginals()
+	{
+		String args[];
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("original");
+		args=new String[focus.getLength()];
+		for(int i=0; i<focus.getLength(); i++)
+		{	
+			node=(Element)focus.item(i);
+		
+			if(node!=null)
+				text=node.getTextContent();
+			args[i]=imgStem+text;
+		}
+				
+		return args;
+	}
+	public String[] getBoxArt()
+	{
+		String args[];
+		String text=null;
+		
+		focus=gameDoc.getElementsByTagName("boxart");
+		args=new String[focus.getLength()];
+		for(int i=0; i<focus.getLength(); i++)
+		{	
+			node=(Element)focus.item(i);
+		
+			if(node!=null)
+				text=node.getTextContent();
+			args[i]=imgStem+text;
+		}
+				
+		return args;
+	}
+	
+	@Override
+	public int compareTo(Game arg0)
+	{
+	
+		
+		return this.gameID-arg0.gameID;
+	}
+	
+	
+	
+	
+
+}

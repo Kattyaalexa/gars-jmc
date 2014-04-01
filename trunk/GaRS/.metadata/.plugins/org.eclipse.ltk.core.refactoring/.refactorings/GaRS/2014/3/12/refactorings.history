@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Encapsulate field &apos;Recommender.recomendations&apos; in &apos;Recommender&apos;&#x0D;&#x0A;- Original project: &apos;GaRS&apos;&#x0D;&#x0A;- Original element: &apos;Recommender.recomendations&apos;&#x0D;&#x0A;- Getter method name: &apos;getRecomendations&apos;&#x0D;&#x0A;- Setter method name: &apos;setRecomendations&apos;&#x0D;&#x0A;- Field visibility: &apos;public&apos;&#x0D;&#x0A;- Use getter and setter methods in declaring type" comments="false" declaring="true" description="Encapsulate field &apos;recomendations&apos;" flags="589830" getter="getRecomendations" id="org.eclipse.jdt.ui.self.encapsulate" input="/&lt;{Recommender.java[Recommender^recomendations" insertion="5" setter="setRecomendations" stamp="1395109846085" version="1.0" visibility="1"/>
+</session>

@@ -1,0 +1,69 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
+
+
+public class tester extends JApplet
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField searchBar;
+	private JButton search;
+	private JPanel controls;
+	private JPanel theVoid;
+	
+	public void init()
+	{
+		
+		assembleUI();
+		
+		
+	}
+	private void assembleUI()
+	{
+		searchBar=new JTextField();
+		search=new JButton("Search");
+		controls=new JPanel();
+		controls.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		searchBar.setPreferredSize(new Dimension(getContentPane().getWidth()-search.getWidth()-100, 24));
+	
+		controls.add(searchBar);
+		controls.add(search);
+		searchBar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		searchBar.setVisible(true);
+		controls.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		getContentPane().add(controls, BorderLayout.NORTH);
+	
+	}
+
+	/*
+	public void start()
+	{
+		
+	}
+	public void stop()
+	{
+		
+	}
+	public void destroy()
+	{
+		
+	}
+	public void paint(Graphics g)
+	{
+		
+	}*/
+	
+}

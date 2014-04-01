@@ -1,0 +1,13 @@
+{
+  "C:\\Users\\cpt SATAN\\Desktop\\eclipse\\lib\\rt.jar": {
+    "coordinate": "jre:jre:zip:call:1.0.0",
+    "location": "C:\\Users\\cpt SATAN\\Desktop\\eclipse\\lib\\rt.jar",
+    "status": "RESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\cpt SATAN\\Desktop\\eclipse\\lib\\rt.jar\u0027. Skipped."
+  },
+  "C:\\Users\\cpt SATAN\\Documents\\EclipseWS\\GaRS\\GaRS": {
+    "location": "C:\\Users\\cpt SATAN\\Documents\\EclipseWS\\GaRS\\GaRS",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027C:\\Users\\cpt SATAN\\Documents\\EclipseWS\\GaRS\\GaRS\u0027. Skipped."
+  }
+}
