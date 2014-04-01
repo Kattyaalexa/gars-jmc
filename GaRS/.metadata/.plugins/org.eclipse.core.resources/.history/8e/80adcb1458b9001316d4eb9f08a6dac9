@@ -1,0 +1,90 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.LinkedList;
+
+import javax.swing.BorderFactory;
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+
+
+
+
+public class tester extends JApplet implements ActionListener
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JTextField searchBar;
+	private JButton search;
+	private JPanel controls;
+	private JPanel theVoid;
+	User uMon;
+	
+	public void init()
+	{
+		
+		assembleUI();
+		uMon=new User();
+		
+		
+		
+	}
+	private void assembleUI()
+	{
+		searchBar=new JTextField();
+		search=new JButton("Search");
+		controls=new JPanel();
+		controls.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+		searchBar.setPreferredSize(new Dimension(getContentPane().getWidth()-search.getWidth()-100, 24));
+		search.addActionListener(this);
+		controls.add(searchBar);
+		controls.add(search);
+		searchBar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		searchBar.setVisible(true);
+		controls.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+		getContentPane().add(controls, BorderLayout.NORTH);
+	
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		LinkedList<Game> result=Searcher.gameSearch(search.getText(), uMon.getAcceptedPlatforms());
+		
+		theVoid=new JPanel();
+		theVoid.setLayout(new GridLayout(10,10,5,5));
+		for(int i=0; i<50; i++)
+		{
+			theVoid.add(new JLable(result.get(i).getGameTitle()+" "+result.get(i).getPlatform()));
+		}
+		
+	}
+
+	/*
+	public void start()
+	{
+		
+	}
+	public void stop()
+	{
+		
+	}
+	public void destroy()
+	{
+		
+	}
+	public void paint(Graphics g)
+	{
+		
+	}*/
+	
+}
