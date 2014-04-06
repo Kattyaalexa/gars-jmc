@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GameON</string>
+    <string name="action_settings">Settings</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="input_hint">Please enter input</string>
+    <string name="username">Username</string>
+    <string name="game_on">GameON</string>
+	<string name="register">Register</string>
+	<string name="request_game">Request Game</string>
+	<string name="add_game">Add New Game</string>
+	<string name="button">Button</string>
+	<string name="name">Name:</string>
+	<string name="genre">Genre:</string>
+	<string name="release_date">Release Date:</string>
+	<string name="platform">Platform:</string>
+	<string name="reqdesc">Game Request Button</string>
+	<string name="logout">Logout</string>
+	<string name="guest_login">Login as guest</string>
+	<string name="newgametext">Enter New Game</string>
+	<string name="submit">Submit</string>
+	<string name="like">like</string>
+	<string name="dislike">dislike</string>
+</resources>
+

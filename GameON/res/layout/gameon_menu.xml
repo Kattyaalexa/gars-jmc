@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+	Function Name: gameon_menu.xml
+	Description: this is the basic layout of the gameON main menu
+	Date Created: February 24, 2014
+	Author: Michael Chiong
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" 
+    android:background="@drawable/background_2">
+    
+<!-- 
+	Function Name: request Button
+	Description: button for requesting game
+	Date Created: February 24, 2014
+	Author: Michael Chiong
+-->
+
+    <ImageButton
+        android:id="@+id/request_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_logo_2" 
+        android:contentDescription="@string/reqdesc"
+        android:onClick="gotoRequest"/>
+    
+<!-- 
+	Function Name: add Button
+	Description: button for adding game
+	Date Created: February 24, 2014
+	Author: Michael Chiong
+-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_marginLeft="25dp"
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/newgametext" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_marginRight="25dp"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:text="@string/submit" 
+            android:onClick="gotoNewGame"/>
+
+    </LinearLayout>
+
+</LinearLayout>
