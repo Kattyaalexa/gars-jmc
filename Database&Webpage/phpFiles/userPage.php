@@ -11,7 +11,7 @@ $username = $_SESSION['username'];
 </head>
 <body>
 <?php
-$con=mysqli_connect("localhost","root","thereisn0sp00n","vgra_database");
+$con=mysqli_connect("localhost","root","garsjmc","vgra_database");
 $result = mysqli_query($con,"SELECT * FROM members WHERE BINARY username = '".$username."'")
 or die(mysql_error());
 
