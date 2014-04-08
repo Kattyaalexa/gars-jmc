@@ -49,7 +49,7 @@ $password = @$_GET["password"]; ?>
 
   
   <?php 
-$con=mysqli_connect("localhost","root","thereisn0sp00n","vgra_database");
+$con=mysqli_connect("localhost","root","garsjmc","vgra_database");
 // Check connection
 if (mysqli_connect_errno())
   {
